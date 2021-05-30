@@ -1,0 +1,29 @@
+WorldText {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+
+  SingularWorldText {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    font-family: Poppins, serif;
+    color: white;
+    font-weight: 800;
+    font-size: 24px;
+    text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    
+    label {
+      position: relative;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      width: 500px;
+    }
+  }
+
+}

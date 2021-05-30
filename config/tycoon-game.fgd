@@ -1,0 +1,39 @@
+@BaseClass = tg_plot_teams
+[
+    plot_team(choices) : "Team" : 0 : "The team of the plot" =
+    [
+        0 : "Red"
+        1 : "Green"
+        2 : "Blue"
+        3 : "Purple"
+        4 : "Pink"
+        5 : "Orange"
+    ]
+]
+
+@PointClass base(tg_plot_teams)
+            editormodel( "models/editor/env_cubemap" )
+            box_oriented( plot_mins, plot_maxs )
+            bakeresource( cubemaptexture, vtex, env_cubemap, "ToolObjects/CubeMap" ) = tg_plot
+[
+    plot_mins(vector) : "Plot Area Mins" : "-384.0 -384.0 -64.0"
+    
+    plot_maxs(vector) : "Plot Area Maxs" : "384.0 384.0 64.0"
+    
+    plot_rotation(vector) : "Plot Rotation" : "0 0 0"
+]
+
+@PointClass base(tg_plot_teams) editormodel( "models/tg_floor_button.vmdl" ) = tg_join_plot_button
+[
+]
+
+@PointClass base(tg_plot_teams) editormodel( "models/tg_floor_button.vmdl" ) = tg_buy_entity_floor_button
+[    
+    entity_name(string) : "Entity Name" : "" : "The name of the entity with the library attribute"
+    entity_position(vector) : "Entity Position": "0 0 0" : "The position the entity will spawn"
+    entity_rotation(vector) : "Entity Rotation": "0 0 0" : "The rotation the entity will spawn"
+]
+
+@PointClass editormodel( "models/tg_money_withdraw_machine/tg_money_withdraw_machine.vmdl" ) = tg_test_entity
+[    
+]

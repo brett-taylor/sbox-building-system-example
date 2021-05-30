@@ -1,0 +1,19 @@
+{
+		"name": "ThatTycoonGame",
+		"sharedassets": "*.*",
+		
+		"depends": 
+		[
+			"base",
+			"citizen"
+		],
+
+		"gamemodes":
+		[
+			{
+				"name": "ThatTycoonGame",
+				"title": "That Tycoon Game",
+				"description": "One of those really bad tycoon games for roblox but in s&box."
+			}
+		]
+}
