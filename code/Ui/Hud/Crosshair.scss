@@ -1,0 +1,18 @@
+Crosshair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  .center-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+}

@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using Sandbox;
 using ThatTycoonGame.Data;
 using ThatTycoonGame.Entities;
-using ThatTycoonGame.Entities.SpawnPoint;
+using ThatTycoonGame.Entities.Button;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot.Type;
 
 namespace ThatTycoonGame.Plot
 {
 	public partial class RealPlot : Plot
 	{
+		private static readonly Vector3 SPAWN_POSITION = new(0f, -380f, 0f);
+
 		[Net] private PlotTeam PlotTeam { get; set; }
 		[Net] private List<TycoonPlayer> Players { get; set; }
 		private List<Entity> EntitiesToRemoveOnPlotDeactivation { get; set; }
 		private Vector3 PlotPosition { get; set; }
 		private Rotation PlotRotation { get; set; }
+		private BBox BoundingBox { get; set; }
 
 		public RealPlot()
 		{
@@ -23,11 +27,12 @@ namespace ThatTycoonGame.Plot
 			EntitiesToRemoveOnPlotDeactivation = new List<Entity>();
 		}
 
-		public RealPlot( PlotTeam plotTeam, Vector3 position, Rotation rotation ) : this()
+		public RealPlot( PlotTeam plotTeam, Vector3 position, Rotation rotation, BBox boundingBox ) : this()
 		{
 			PlotTeam = plotTeam;
 			PlotPosition = position;
 			PlotRotation = rotation;
+			BoundingBox = boundingBox;
 		}
 
 		public override PlotTeam GetPlotTeam()
@@ -42,7 +47,7 @@ namespace ThatTycoonGame.Plot
 
 		public override bool CanJoinTeam( TycoonPlayer player )
 		{
-			return Players.Count == 0;
+			return true;
 		}
 
 		public override void RemovePlayer( TycoonPlayer player )
@@ -67,7 +72,7 @@ namespace ThatTycoonGame.Plot
 				SpawnBuyEntityFloorButton( entitySpawnPoint );
 		}
 
-		private BuyEntityFloorButton SpawnBuyEntityFloorButton( EntitySpawnPoint spawnPoint )
+		private void SpawnBuyEntityFloorButton( EntitySpawnPoint spawnPoint )
 		{
 			var buyEntityButton = new BuyEntityFloorButton();
 			buyEntityButton.PlotTeam = PlotTeam;
@@ -79,15 +84,14 @@ namespace ThatTycoonGame.Plot
 			buyEntityButton.EntityToCreateRotation = Rotation.FromYaw( spawnPoint.EntityRotation.y );
 
 			EntitiesToRemoveOnPlotDeactivation.Add( buyEntityButton );
-			return buyEntityButton;
 		}
 
-		public Vector3 GetAbsolutePosition( Vector3 offset )
+		public override Vector3 GetAbsolutePosition( Vector3 offset )
 		{
 			return PlotPosition + (offset * PlotRotation);
 		}
 
-		public Rotation GetAbsoluteRotation( Rotation rotation )
+		public override Rotation GetAbsoluteRotation( Rotation rotation )
 		{
 			return PlotRotation * rotation;
 		}
@@ -109,7 +113,7 @@ namespace ThatTycoonGame.Plot
 			entity.Rotation = GetAbsoluteRotation( rotation );
 
 			EntitiesToRemoveOnPlotDeactivation.Add( entity );
-			
+
 			if ( entity is PlotEntity pe )
 				pe.PlotTeam = PlotTeam;
 		}
@@ -118,6 +122,21 @@ namespace ThatTycoonGame.Plot
 		{
 			if ( EntitiesToRemoveOnPlotDeactivation.Contains( plotEntity ) )
 				EntitiesToRemoveOnPlotDeactivation.Remove( plotEntity );
+		}
+
+		public override BBox GetBoundingBox()
+		{
+			return BoundingBox;
+		}
+
+		public override int PlayerCount()
+		{
+			return Players.Count;
+		}
+
+		public override Vector3 RelativeSpawnPosition()
+		{
+			return SPAWN_POSITION;
 		}
 	}
 }

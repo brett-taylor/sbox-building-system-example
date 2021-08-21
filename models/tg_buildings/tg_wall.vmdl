@@ -1,0 +1,119 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "MaterialGroup"
+						name = "invalid"
+						remaps = 
+						[
+							{
+								from = "models/rust_props/ladder_set/woodplanks_quarry.vmat"
+								to = "materials/tg_building/tg_ghost_invalid_placement.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "valid"
+						remaps = 
+						[
+							{
+								from = "models/rust_props/ladder_set/woodplanks_quarry.vmat"
+								to = "materials/tg_building/tg_ghost_valid_placement.vmat"
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 0.0, 0.0, 50.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 120.0, 5.0, 100.0 ]
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "snap_point_wall_1"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 100.0 ]
+						relative_angles = [ 0.0, 90.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "snap_point_wall_2"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 100.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "snap_point_floor_1"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 100.0 ]
+						relative_angles = [ 0.0, 90.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "snap_point_floor_2"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 100.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderPrimitiveBox"
+						name = "box"
+						parent_bone = ""
+						material_name = "models/rust_props/ladder_set/woodplanks_quarry.vmat"
+						origin = [ 0.0, 0.0, 50.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						max_u = 1.0
+						max_v = 1.0
+						dimensions = [ 120.0, 5.0, 100.0 ]
+						segments_x = 1
+						segments_y = 1
+						segments_z = 1
+						invert = false
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+	}
+}

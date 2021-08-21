@@ -1,8 +1,9 @@
 using Sandbox;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot;
 using ThatTycoonGame.Plot.Type;
 
-namespace ThatTycoonGame.Entities.SpawnPoint
+namespace ThatTycoonGame.Entities.Button
 {
 	[Library( "tg_buy_entity_floor_button" )]
 	public partial class BuyEntityFloorButton : GenericFloorButton
@@ -31,7 +32,7 @@ namespace ThatTycoonGame.Entities.SpawnPoint
 
 			if ( tycoonPlayer.PlotTeam != PlotTeam )
 				return;
-			
+
 			var plot = PlotManager.Current.FindPlotForTeam( PlotTeam ) as RealPlot;
 			plot.CreateEntity( EntityToCreateName, EntityToCreatePosition, EntityToCreateRotation );
 
@@ -43,7 +44,7 @@ namespace ThatTycoonGame.Entities.SpawnPoint
 			base.OnDestroy();
 			(PlotManager.Current.FindPlotForTeam( PlotTeam ) as RealPlot).UnregisterPlotEntity( this );
 		}
-		
+
 		protected override void DoClientTick()
 		{
 			if ( Local.Pawn is not null && Local.Pawn is TycoonPlayer tp )

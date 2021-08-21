@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sandbox.UI;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot.Type;
 
 namespace ThatTycoonGame.Ui.Scoreboard

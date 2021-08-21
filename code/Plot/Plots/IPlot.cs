@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Sandbox;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot.Type;
 
 namespace ThatTycoonGame.Plot
@@ -15,5 +16,15 @@ namespace ThatTycoonGame.Plot
 		public abstract void RemovePlayer( TycoonPlayer player );
 
 		public abstract void AddPlayer( TycoonPlayer player );
+
+		public abstract BBox GetBoundingBox();
+
+		public abstract int PlayerCount();
+
+		public abstract Vector3 RelativeSpawnPosition();
+
+		public abstract Vector3 GetAbsolutePosition( Vector3 offset );
+
+		public abstract Rotation GetAbsoluteRotation( Rotation rotation );
 	}
 }

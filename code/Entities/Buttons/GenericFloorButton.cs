@@ -1,8 +1,9 @@
 using Sandbox;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Ui;
 using ThatTycoonGame.Ui.WorldText;
 
-namespace ThatTycoonGame.Entities
+namespace ThatTycoonGame.Entities.Button
 {
 	[Library( "tg_floor_button" )]
 	public class GenericFloorButton : ModelEntity
@@ -43,7 +44,7 @@ namespace ThatTycoonGame.Entities
 				WorldTextData.Color = WorldTextColor;
 				WorldTextData.Position = Position + (WorldTextOffsetY * Vector3.Up);
 				WorldTextData.Text = WorldTextString;
-				WorldTextData.Show = EnableDrawing;	
+				WorldTextData.Show = EnableDrawing;
 			}
 
 			DoClientTick();

@@ -1,13 +1,13 @@
 using Sandbox;
-using ThatTycoonGame.Plot;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot.Type;
 
-namespace ThatTycoonGame.Entities
+namespace ThatTycoonGame.Entities.Button
 {
 	[Library( "tg_join_plot_button" )]
 	public partial class JoinPlotFloorButton : GenericFloorButton
 	{
-		[Net] [HammerProp( "plot_team" )] public PlotTeam PlotTeam { get; private set; }
+		[Net] [Property( "plot_team" )] public PlotTeam PlotTeam { get; private set; }
 
 		protected override bool HasWorldText => true;
 		protected override float WorldTextOffsetY => 50f;

@@ -1,0 +1,77 @@
+// 
+// ThatTycoonGame.TycoonGame : Sandbox.Game 
+// 
+@PointClass = ThatTycoonGame : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+]
+
+// 
+// ThatTycoonGame.Entities.PlotMapEntity : Sandbox.Entity 
+// 
+@PointClass = tg_plot : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	plot_team(choices) : "Plot Team" : 0 : "" = [
+		0 : "RED"
+		1 : "GREEN"
+		2 : "BLUE"
+		3 : "PURPLE"
+		4 : "PINK"
+		5 : "ORANGE"
+		9999 : "UNASSIGNED"
+	]
+	plot_maxs(vector) : "Plot Maxs" :  : ""
+	plot_mins(vector) : "Plot Mins" :  : ""
+	plot_rotation(vector) : "Plot Rotation" :  : ""
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+]
+
+// 
+// ThatTycoonGame.Entities.Button.BuyEntityFloorButton : ThatTycoonGame.Entities.Button.GenericFloorButton 
+// 
+@PointClass = tg_buy_entity_floor_button : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+// 
+// ThatTycoonGame.Entities.Button.GenericFloorButton : Sandbox.ModelEntity 
+// 
+@PointClass = tg_floor_button : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+// 
+// ThatTycoonGame.Entities.Button.JoinPlotFloorButton : ThatTycoonGame.Entities.Button.GenericFloorButton 
+// 
+@PointClass = tg_join_plot_button : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	plot_team(choices) : "Plot Team" : 0 : "" = [
+		0 : "RED"
+		1 : "GREEN"
+		2 : "BLUE"
+		3 : "PURPLE"
+		4 : "PINK"
+		5 : "ORANGE"
+		9999 : "UNASSIGNED"
+	]
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+

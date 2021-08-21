@@ -1,5 +1,6 @@
 using Sandbox.UI;
 using Sandbox.UI.Construct;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot.Type;
 
 namespace ThatTycoonGame.Ui.Scoreboard
@@ -14,7 +15,7 @@ namespace ThatTycoonGame.Ui.Scoreboard
 		{
 			avatar = Add.Image( "" );
 			avatar.SetClass( "avatar", true );
-			
+
 			row = AddChild<TycoonScoreboardRow>();
 			row.FirstColumn.SetText( "Player Name" );
 			row.SecondColumn.SetText( "300" );
@@ -25,12 +26,12 @@ namespace ThatTycoonGame.Ui.Scoreboard
 		{
 			this.player = player;
 			row.FirstColumn.SetText( player.GetClientOwner().Name );
-			
-			avatar.SetTexture( $"avatar:{ player.GetClientOwner().SteamId }" );
+
+			avatar.SetTexture( $"avatar:{player.GetClientOwner().SteamId}" );
 			avatar.Style.BorderColor = player.PlotTeam.GetDescription().Color;
 			avatar.Style.Dirty();
 		}
-		
+
 		public void Update()
 		{
 			row.SecondColumn.SetText( player.Money.ToString() );

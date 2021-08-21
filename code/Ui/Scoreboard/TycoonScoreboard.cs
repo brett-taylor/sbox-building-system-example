@@ -29,6 +29,7 @@ namespace ThatTycoonGame.Ui.Scoreboard
 			{
 				var plotsToAdd = PlotManager.Current.Plots
 					.Where( p => !plots.ContainsKey( p ) )
+					.OrderBy( p => p.GetPlotTeam().ToString() )
 					.ToList();
 
 				foreach ( var plot in plotsToAdd )

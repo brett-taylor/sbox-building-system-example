@@ -22,12 +22,14 @@ namespace ThatTycoonGame.Plot
 		public void CreatePlots( IEnumerable<PlotMapEntity> PlotEntities )
 		{
 			Plots = PlotEntities
-				.Select( pe => new RealPlot( pe.PlotTeam, pe.Position, Rotation.FromYaw( pe.PlotRotation.y ) ) )
+				.Select( pe => new RealPlot(
+					pe.PlotTeam,
+					pe.Position,
+					Rotation.FromYaw( pe.PlotRotation.y ),
+					new BBox( pe.AbsoluteAreaMin, pe.AbsoluteAreaMax )
+				) )
 				.Cast<Plot>()
 				.ToList();
-
-			var unassignedPlot = new VirtualPlot( PlotTeam.UNASSIGNED );
-			Plots.Add( unassignedPlot );
 		}
 
 		public Plot FindPlotForTeam( PlotTeam team )

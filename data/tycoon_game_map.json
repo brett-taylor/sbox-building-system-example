@@ -1,10 +1,2 @@
 [ 
-  {
-    "EntityName": "tg_money_withdraw_machine",
-    "EntityPosition": "-364.283 -335.295 -16",
-    "EntityRotation": "0 270 0",
-    "ButtonPosition": "-311.086 -335.569 -16",
-    "ButtonRotation": "0 270 0",
-    "BuyButtonText": "Buy ATM ($0)"
-  }
 ]

@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Sandbox;
 using ThatTycoonGame.Data;
 using ThatTycoonGame.Entities;
+using ThatTycoonGame.Entities.Player;
 using ThatTycoonGame.Plot;
 using ThatTycoonGame.Plot.Type;
 using ThatTycoonGame.Ui;
@@ -11,15 +13,13 @@ namespace ThatTycoonGame
 	[Library( "ThatTycoonGame" )]
 	public partial class TycoonGame : Game
 	{
-		public static TycoonGame Instance => Current as TycoonGame;
-
 		public TycoonGame()
 		{
 			if ( !IsServer )
 				return;
 
-			new TycoonHudRootPanel();
-			new PlotManager();
+			var _ = new TycoonHudRootPanel();
+			var __ = new PlotManager();
 			MapData.LoadData();
 		}
 
@@ -35,9 +35,6 @@ namespace ThatTycoonGame
 
 		public override void ClientDisconnect( Client client, NetworkDisconnectionReason reason )
 		{
-			var player = client.Pawn as TycoonPlayer;
-			player.SetPlot( PlotTeam.UNASSIGNED );
-			
 			base.ClientDisconnect( client, reason );
 		}
 
@@ -47,6 +44,15 @@ namespace ThatTycoonGame
 				.Cast<PlotMapEntity>()
 				.ToList()
 			);
+		}
+
+		[ServerCmd( "tg_join_plot" )]
+		public static void JoinPlot( string plotName )
+		{
+			if ( Enum.TryParse( plotName, out PlotTeam plotTeam ) )
+				(ConsoleSystem.Caller.Pawn as TycoonPlayer).SetPlot( plotTeam );
+			else
+				throw new ArgumentException( $"Plot {plotName} does not exist." );
 		}
 	}
 }
